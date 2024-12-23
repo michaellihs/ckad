@@ -70,3 +70,59 @@ Paste this token into the login UI.
 doctl kubernetes clusters list
 doctl kubernetes clusters kubeconfig save lihs-k8s --alias lihs-k8s
 ```
+
+## Starting a container in Kubernetes
+
+```bash
+kubectl run mywebserver --image=nginx
+```
+
+## Exec into a container
+
+```bash
+kubectl exec -it mywebserver -- bash
+```
+
+## Delete a pod
+
+```bash
+kubectl delete pod mywebserver
+```
+
+## Create Pod from yaml
+
+From within the directory of this file:
+
+```bash
+kubectl apply -f yamls/nginx-pod.yaml
+```
+
+## Resources to learn about K8S objects
+
+- K8S API [http://localhost:8001/api/v1](http://localhost:8001/api/v1)
+- [K8S API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/)
+- `kubectl explain pod.spec.containers`
+
+## Create a yaml with the `kubectl` CLI
+
+```bash
+kubectl run mywebserver --image=nginx --port=80 --dry-run=client -o yaml
+
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   creationTimestamp: null
+#   labels:
+#     run: mywebserver
+#   name: mywebserver
+# spec:
+#   containers:
+#   - image: nginx
+#     name: mywebserver
+#     ports:
+#     - containerPort: 80
+#     resources: {}
+#   dnsPolicy: ClusterFirst
+#   restartPolicy: Always
+# status: {}
+```
