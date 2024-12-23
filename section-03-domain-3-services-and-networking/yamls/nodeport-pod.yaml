@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    type: publicpod
+  name: nodeport-pod
+spec:
+  containers:
+    - image: nginx
+      name: nodeport-pod
+      ports:
+        - containerPort: 80

@@ -94,3 +94,28 @@ kubernetes       ClusterIP   10.109.0.1     <none>        443/TCP    9h
    ```
 
 ## Service Type - NodePort
+
+NodePort exposes the service on each node's IP on a static port. You'll be able to connect to the service via `<WorkerIP>:<NodePort>`.
+
+### Create a service with a NodePort
+
+1. Create sample POD with label
+
+   ```bash
+   kubectl run nodeport-pod --labels="type=publicpod" --image=nginx
+   ```
+
+2. Create a service with type `NodePort`
+
+   ```bash
+   kubectl apply -f yamls/nodeport.yaml
+   ```
+
+3. Verify service was created
+
+```text
+kubectl get services -o wide  
+NAME              TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE    SELECTOR
+kplabs-nodeport   NodePort    10.109.27.93   <none>        80:32038/TCP   115m   type=publicpod
+kubernetes        ClusterIP   10.109.0.1     <none>        443/TCP        11h    <none>
+```
