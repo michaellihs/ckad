@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: kplabs-label
+    env: production
+    app: webserver
+  name: kplabs-label
+spec:
+  containers:
+    - image: nginx
+      name: kplabs-label
+  restartPolicy: Always

@@ -5,6 +5,15 @@ This repo contains my notes and exercises for the [Certified Kubernetes Applicat
 ## Sections of the Course
 
 - [Section 1 - Core Concepts](section-01-domain-1-core-concepts/section-01.md)
+- [Section 2 - POD Design](section-02-domain-2-pod-design/section-02.md)
+
+## Concepts
+
+- [PODs](section-01-domain-1-core-concepts/section-01.md#pods)
+- [Labels](section-02-domain-2-pod-design/section-02.md#labels)
+- [ReplicaSets](section-02-domain-2-pod-design/section-02.md#replicasets)
+- [Deployments](section-02-domain-2-pod-design/section-02.md#deployments)
+- [Jobs](section-02-domain-2-pod-design/section-02.md#jobs)
 
 ## Prerequisites
 

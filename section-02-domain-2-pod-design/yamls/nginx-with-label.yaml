@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mywebserver
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: mywebserver
+      image: nginx

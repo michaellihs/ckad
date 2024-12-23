@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: kplabs-job
+spec:
+  jobTemplate:
+    metadata:
+      name: kplabs-job
+    spec:
+      template:
+        spec:
+          containers:
+          - image: busybox
+            name: kplabs-job
+            args:
+              - date
+          restartPolicy: OnFailure
+  schedule: "*/1 * * * *"

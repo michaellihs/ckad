@@ -71,30 +71,24 @@ doctl kubernetes clusters list
 doctl kubernetes clusters kubeconfig save lihs-k8s --alias lihs-k8s
 ```
 
-## Starting a container in Kubernetes
+## PODs
+
+### Starting a container in Kubernetes
 
 ```bash
 kubectl run mywebserver --image=nginx
 ```
 
-## Exec into a container
+### Exec into a container
 
 ```bash
 kubectl exec -it mywebserver -- bash
 ```
 
-## Delete a pod
+### Delete a POD
 
 ```bash
 kubectl delete pod mywebserver
-```
-
-## Create Pod from yaml
-
-From within the directory of this file:
-
-```bash
-kubectl apply -f yamls/nginx-pod.yaml
 ```
 
 ## Resources to learn about K8S objects
@@ -103,7 +97,17 @@ kubectl apply -f yamls/nginx-pod.yaml
 - [K8S API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/)
 - `kubectl explain pod.spec.containers`
 
-## Create a yaml with the `kubectl` CLI
+## K8S objects from  Yaml
+
+### Create Pod from yaml
+
+From within the directory of this file:
+
+```bash
+kubectl apply -f yamls/nginx-pod.yaml
+```
+
+### Create a yaml with the `kubectl` CLI
 
 ```bash
 kubectl run mywebserver --image=nginx --port=80 --dry-run=client -o yaml
@@ -125,4 +129,30 @@ kubectl run mywebserver --image=nginx --port=80 --dry-run=client -o yaml
 #   dnsPolicy: ClusterFirst
 #   restartPolicy: Always
 # status: {}
+```
+
+## Node affinity
+
+In the pod specification:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: mywebserver
+  name: mywebserver
+spec:
+  nodeSelector:
+    disk: ssd
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+```
+
+Add a label to a node via
+
+```bash
+kubectl label node pool-hmown489v-eyjmd disk=ssd
 ```

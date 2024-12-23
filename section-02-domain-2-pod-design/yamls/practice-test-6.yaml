@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: kplabs-cron
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: kplabs-cron
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: nginx
+            name: kplabs-cron
+            command: ["curl", "kplabs.in/ping"]
+          restartPolicy: OnFailure
+  schedule: '*/1 * * * *'
+status: {}
