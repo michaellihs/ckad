@@ -1,4 +1,4 @@
-# Core Concepts
+# Section 1 - Core Concepts
 
 ## Local Kubernetes
 

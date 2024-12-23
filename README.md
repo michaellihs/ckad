@@ -6,6 +6,7 @@ This repo contains my notes and exercises for the [Certified Kubernetes Applicat
 
 - [Section 1 - Core Concepts](section-01-domain-1-core-concepts/section-01.md)
 - [Section 2 - POD Design](section-02-domain-2-pod-design/section-02.md)
+- [Section 3 - Services and Networking](section-03-domain-3-services-and-networking/section-03.md)
 
 ## Concepts
 
@@ -14,6 +15,8 @@ This repo contains my notes and exercises for the [Certified Kubernetes Applicat
 - [ReplicaSets](section-02-domain-2-pod-design/section-02.md#replicasets)
 - [Deployments](section-02-domain-2-pod-design/section-02.md#deployments)
 - [Jobs](section-02-domain-2-pod-design/section-02.md#jobs)
+- [Services](section-03-domain-3-services-and-networking/section-03.md#services)
+- [Service Type - Cluster IP](section-03-domain-3-services-and-networking/section-03.md#service-type---clusterip)
 
 ## Prerequisites
 
