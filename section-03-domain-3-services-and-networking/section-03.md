@@ -59,3 +59,38 @@ A service is a gateway that distributes the incoming traffic between its endpoin
     ```
 
 ## Service Type - ClusterIP
+
+When a service is of type ClusterIP an internal IP address is assigned to the service. Since it's internal, service can only be accessed from within the cluster.
+
+This is the _default_ service type.
+
+In the above terminology, the ClusterIP is the IP address of the "gateway".
+
+```text
+kubectl get service  
+NAME             TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+kplabs-service   ClusterIP   10.109.27.13   <none>        8080/TCP   23m
+kubernetes       ClusterIP   10.109.0.1     <none>        443/TCP    9h
+```
+
+## Using Selectors for Endpoints
+
+1. Create a deployment with properly set labels
+
+   ```bash
+   kubectl apply -f yamls/deployment.yaml
+   ```
+
+2. Create a service selecting the pods from the deployment (via labels)
+
+   ```bash
+   kubectl apply -f yamls/service-selector.yaml
+   ```
+
+3. Check whether the service has the expected enpoints
+
+   ```bash
+   kubectl describe service <SERVICE NAME>
+   ```
+
+## Service Type - NodePort
